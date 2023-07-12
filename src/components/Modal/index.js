@@ -67,7 +67,7 @@ const CustomModal = ({ handleClose, open, data }) => {
                 <img
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data?.id}.png`}
                   width={230}
-                  alt={"image-test"}
+                  alt={`pokemon-${data?.id}`}
                 />
               </div>
             </div>

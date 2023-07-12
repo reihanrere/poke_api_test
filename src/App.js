@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { apiGetPokemonDetail, apiGetPokemonList } from "./api/pokemonList.api";
 import ResponsiveAppBar from "./components/AppBar";
 import { Button, Container, TextField } from "@mui/material";
@@ -12,7 +12,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
 
-  const getPokemonList = async () => {
+  const getPokemonList = useCallback(async () => {
     try {
       setLoading(true);
       const res = await apiGetPokemonList({ limit });
@@ -20,7 +20,7 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [limit]);
 
   const handleSearch = (event) => {
     setSearchText(event.target.value);
@@ -34,7 +34,7 @@ function App() {
     pokemon.name.toLowerCase().includes(searchText.toLowerCase())
   );
 
-  const handleShowDetail = async (i) => {
+  const handleShowDetail = useCallback(async (i) => {
     try {
       const res = await apiGetPokemonDetail({ params: i });
       setListDetail(res.response);
@@ -42,7 +42,7 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
   const handleClose = () => {
     setOpen(false);
@@ -59,7 +59,7 @@ function App() {
     return () => {
       clearTimeout(loadingTimer);
     };
-  }, [limit]);
+  }, [getPokemonList]);
 
   return (
     <>
@@ -95,7 +95,7 @@ function App() {
                           i + 1
                         }.png`}
                         width={130}
-                        alt={"image-test"}
+                        alt={`pokemon-${i}`}
                       />
                     </div>
                   </div>
