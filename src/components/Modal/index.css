@@ -1,0 +1,50 @@
+.wrapper-header {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+.wrapper-header .wrapper-title {
+    width: 100%;
+    font-size: 40px;
+    color: #FFF;
+    text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper-detail {
+    margin-top: 0;
+    background-color: #FFF;
+    width: 100%;
+    min-height: 225px;
+    border-radius: 15px 15px 10px 10px;
+    overflow-y: auto;
+    overflow-x: scroll;
+    box-shadow: 0px -1px 2px 2px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0px -1px 2px 2px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px -1px 2px 2px rgba(0,0,0,0.2);  
+    z-index: 1;
+}
+
+.image-detail {
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* CSS tambahan untuk memperbesar gambar saat di hover */
+.image-detail img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-detail img:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper-header {
+      flex-direction: column; /* Mengubah tata letak menjadi tumpukan vertikal */
+      align-items: flex-start; /* Mengatur item agar mulai dari kiri pada tumpukan vertikal */
+    }
+  
+    .wrapper-title {
+      font-size: 30px; /* Mengurangi ukuran font saat layar kecil */
+      margin: 10px 15px; /* Mengurangi margin saat layar kecil */
+    }
+  }

@@ -1,13 +1,108 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/Poppins-Regular.ttf") format("truetype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ececed;
+  margin: 0;
 }
+
+.wrapper {
+  background-color: #FFF;
+  width: 100%;
+  min-height: 580px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5);
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.wrapper .card {
+  width: 100%;
+  min-height: 490px;
+}
+
+.wrapper .card .card-body {
+  display: flex;
+  row-gap: 30px;
+  column-gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* Menengahkan konten */
+}
+
+.wrapper .card .card-body .card-item {
+  height: 120px;
+  width: 265px;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.20);
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; /* Mengatur konten menjadi tumpukan */
+  justify-content: center; /* Menengahkan konten */
+  align-items: center; /* Menengahkan konten */
+  text-align: center; /* Tengah secara horizontal */
+  filter: blur(0); /* Atur blur awal menjadi 0 */
+  transition: filter 0.3s ease;
+}
+
+.wrapper .card .card-body .card-item.loading {
+  filter: blur(1px); /* Efek blur saat loading */
+  animation: moveUp 0.5s ease forwards; /* Animasi pergerakan ke atas saat loading */
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.wrapper .card .card-body .card-item:hover{
+    transform: translateY(-10px); /* Menggerakkan card-item ke atas saat dihover */
+}
+
+.wrapper .card .card-body .card-item .title { 
+  width: 100%;
+}
+
+.wrapper .card .card-body .card-item .title .text { margin-bottom: 20px; font-size: 14px; }
+.wrapper .card .card-body .card-item .title .number { margin-top: 10px; font-size: 18px; color: #a4a4b4; }
+
+.wrapper .card .card-body .card-item .title span { padding: 0 0 0 10px; box-sizing: border-box; overflow: hidden; }
+
+.wrapper .card .card-body .card-item .image {
+  width: 100%;
+  height: 100%;
+  background-color: #ececed;
+  overflow: hidden;
+}
+
+.wrapper .card .card-body .card-item .image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Mengatur gambar sesuai ukuran tanpa melewati batas */
+  object-position: center; /* Menengahkan gambar */
+}
+
+.wrapper .card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.wrapper .card .card-header input {
+  width: 300px;
+}
+
+.wrapper .card .card-footer { 
+  text-align: center;
+  margin-top: 30px;
+ }
